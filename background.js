@@ -17,7 +17,7 @@
     };
 
     var setTitle = function (data){
-        chrome.browserAction.setTitle({title: 'sell: ' + data.sell.display + ' buy: ' + data.buy.display});
+        chrome.browserAction.setTitle({ title: 'sell: ' + data.ask + ' buy: ' + data.bid });
     };
 
     var setData = function (data, time) {
@@ -31,6 +31,7 @@
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
                 if (data) {
+                    console.log('Data OK');
                     setData(data);
                 } else {
                     console.log('http api error', data);
