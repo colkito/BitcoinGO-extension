@@ -9,8 +9,8 @@
         lastValue = 0;
 
     var setBadge = function (data) {
-        lastValue = data.last;
         var badgeColor = data.last >= lastValue ? '#27ae60' : '#c0392b';
+        lastValue = data.last;
 
         chrome.browserAction.setBadgeText({ text: lastValue });
         chrome.browserAction.setBadgeBackgroundColor({ color: badgeColor });
