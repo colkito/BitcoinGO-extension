@@ -1,7 +1,7 @@
 (function (){
     var settings = {
         url: 'https://www.bitstamp.net/api/ticker/',
-        delay: 5
+        delay: 10
     };
 
     var timeout,
@@ -9,7 +9,15 @@
         lastValue = 0;
 
     var setBadge = function (data) {
-        var badgeColor = data.last >= lastValue ? '#27ae60' : '#c0392b';
+        var badgeColor;
+        if (data.last == lastValue) {
+            badgeColor = [0, 0, 0, 150];
+        } else if (data.last > lastValue) {
+            badgeColor = [0, 150, 0, 150];
+        } else {
+            badgeColor = [255, 0, 0, 255];
+        }
+
         lastValue = data.last;
 
         chrome.browserAction.setBadgeText({ text: lastValue });
@@ -52,8 +60,13 @@
     };
 
     var init = function (url, delay, parser) {
-        window.clearTimeout(timeout);
         sendRequest();
+
+        chrome.browserAction.onClicked.addListener(function (tab) {
+            chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+            chrome.browserAction.setBadgeText({ text: '...' });
+            sendRequest();
+        });
     };
 
     init();
