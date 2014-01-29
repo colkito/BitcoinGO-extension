@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Bitcoin GO",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Get live notifications for bitcoin value",
   "icons": {
     "16": "bitcoin-16.png",
