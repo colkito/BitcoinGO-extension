@@ -1,3 +1,4 @@
+[![Beerpay](http://test.beerpay.io/colkito/BitcoinGO-extension/badge.svg?style=flat-square)](http://test.beerpay.io/colkito/BitcoinGO-extension)
 BitcoinGO-extension
 =====================
 
